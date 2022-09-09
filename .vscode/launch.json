@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceRoot}",
+            "env": {
+                "SAP_API_BASE_URL": "http://XXX.XX.XX.XXX:8080/sap/opu/odata/sap/",
+                "SAP_USER":"XXXXXXXXXXXXXX",
+                "SAP_PASS":"XXXXXXXXXXXXXX",
+                "SAP_TOKEN_REFRESH_URL":"http://XXX.XX.XX.XXX:8080/sap/opu/odata/sap/API_SALES_ORDER_SRV/",
+                "SAP_RETRY_MAX_COUNT":"1",
+                "SAP_RETRY_INTERVAL":"500",
+            }
+        }
+    ]
+}
