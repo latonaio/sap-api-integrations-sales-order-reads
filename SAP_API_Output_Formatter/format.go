@@ -240,7 +240,10 @@ func ConvertToToItem(raw []byte, l *logger.Logger) ([]ToItem, error) {
 			ReferenceSDDocumentItem:     data.ReferenceSDDocumentItem,
 			SDProcessStatus:             data.SDProcessStatus,
 			DeliveryStatus:              data.DeliveryStatus,
-			OrderRelatedBillingStatus:   data.OrderRelatedBillingStatus})
+			OrderRelatedBillingStatus:   data.OrderRelatedBillingStatus,
+			ToItemPricingElement:        data.ToItemPricingElement.Deferred.URI,
+			ToItemScheduleLine:          data.ToItemScheduleLine.Deferred.URI,
+		})
 	}
 
 	return toItem, nil

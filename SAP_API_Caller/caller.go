@@ -66,12 +66,27 @@ func (c *SAPAPICaller) Header(salesOrder string) {
 	}
 	c.log.Info(headerPartnerData)
 
-	itemData, err := c.callToItem(headerData[0].ToHeaderPartner)
+	itemData, err := c.callToItem(headerData[0].ToItem)
 	if err != nil {
 		c.log.Error(err)
 		return
 	}
 	c.log.Info(itemData)
+
+	itemPricingElementData, err := c.callToItemPricingElement(itemData[0].ToItemPricingElement)
+	if err != nil {
+		c.log.Error(err)
+		return
+	}
+	c.log.Info(itemPricingElementData)
+
+	itemScheduleLineData, err := c.callToItemScheduleLine(itemData[0].ToItemScheduleLine)
+	if err != nil {
+		c.log.Error(err)
+		return
+	}
+	c.log.Info(itemScheduleLineData)
+
 }
 
 func (c *SAPAPICaller) callSalesOrderSrvAPIRequirementHeader(api, salesOrder string) ([]sap_api_output_formatter.Header, error) {
@@ -92,7 +107,7 @@ func (c *SAPAPICaller) callSalesOrderSrvAPIRequirementHeader(api, salesOrder str
 	return data, nil
 }
 
-func (c *SAPAPICaller) callToHeaderPartner(url string) ([]sap_api_output_formatter.HeaderPartner, error) {
+func (c *SAPAPICaller) callToHeaderPartner(url string) ([]sap_api_output_formatter.ToHeaderPartner, error) {
 	resp, err := c.requestClient.Request("GET", url, map[string]string{}, "")
 	if err != nil {
 		return nil, fmt.Errorf("API request error: %w", err)
@@ -100,14 +115,14 @@ func (c *SAPAPICaller) callToHeaderPartner(url string) ([]sap_api_output_formatt
 	defer resp.Body.Close()
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
-	data, err := sap_api_output_formatter.ConvertToHeaderPartner(byteArray, c.log)
+	data, err := sap_api_output_formatter.ConvertToToHeaderPartner(byteArray, c.log)
 	if err != nil {
 		return nil, fmt.Errorf("convert error: %w", err)
 	}
 	return data, nil
 }
 
-func (c *SAPAPICaller) callToItem(url string) ([]sap_api_output_formatter.Item, error) {
+func (c *SAPAPICaller) callToItem(url string) ([]sap_api_output_formatter.ToItem, error) {
 	resp, err := c.requestClient.Request("GET", url, map[string]string{}, "")
 	if err != nil {
 		return nil, fmt.Errorf("API request error: %w", err)
@@ -115,7 +130,37 @@ func (c *SAPAPICaller) callToItem(url string) ([]sap_api_output_formatter.Item, 
 	defer resp.Body.Close()
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
-	data, err := sap_api_output_formatter.ConvertToItem(byteArray, c.log)
+	data, err := sap_api_output_formatter.ConvertToToItem(byteArray, c.log)
+	if err != nil {
+		return nil, fmt.Errorf("convert error: %w", err)
+	}
+	return data, nil
+}
+
+func (c *SAPAPICaller) callToItemPricingElement2(url string) ([]sap_api_output_formatter.ToItemPricingElement, error) {
+	resp, err := c.requestClient.Request("GET", url, map[string]string{}, "")
+	if err != nil {
+		return nil, fmt.Errorf("API request error: %w", err)
+	}
+	defer resp.Body.Close()
+
+	byteArray, _ := ioutil.ReadAll(resp.Body)
+	data, err := sap_api_output_formatter.ConvertToToItemPricingElement(byteArray, c.log)
+	if err != nil {
+		return nil, fmt.Errorf("convert error: %w", err)
+	}
+	return data, nil
+}
+
+func (c *SAPAPICaller) callToItemScheduleLine2(url string) ([]sap_api_output_formatter.ToItemScheduleLine, error) {
+	resp, err := c.requestClient.Request("GET", url, map[string]string{}, "")
+	if err != nil {
+		return nil, fmt.Errorf("API request error: %w", err)
+	}
+	defer resp.Body.Close()
+
+	byteArray, _ := ioutil.ReadAll(resp.Body)
+	data, err := sap_api_output_formatter.ConvertToToItemScheduleLine(byteArray, c.log)
 	if err != nil {
 		return nil, fmt.Errorf("convert error: %w", err)
 	}
@@ -130,14 +175,14 @@ func (c *SAPAPICaller) Item(salesOrder, salesOrderItem string) {
 	}
 	c.log.Info(itemData)
 
-	itemPricingElementData, err := c.callToItemPricingElement(itemData[0].ItemPricingElement)
+	itemPricingElementData, err := c.callToItemPricingElement(itemData[0].ToItemPricingElement)
 	if err != nil {
 		c.log.Error(err)
 		return
 	}
 	c.log.Info(itemPricingElementData)
 
-	itemScheduleLineData, err := c.callToItemScheduleLine(itemData[0].ItemScheduleLine)
+	itemScheduleLineData, err := c.callToItemScheduleLine(itemData[0].ToItemScheduleLine)
 	if err != nil {
 		c.log.Error(err)
 		return
@@ -164,7 +209,7 @@ func (c *SAPAPICaller) callSalesOrderSrvAPIRequirementItem(api, salesOrder, sale
 	return data, nil
 }
 
-func (c *SAPAPICaller) callToItemPricingElement(url string) ([]sap_api_output_formatter.ItemPricingElement, error) {
+func (c *SAPAPICaller) callToItemPricingElement(url string) ([]sap_api_output_formatter.ToItemPricingElement, error) {
 	resp, err := c.requestClient.Request("GET", url, map[string]string{}, "")
 	if err != nil {
 		return nil, fmt.Errorf("API request error: %w", err)
@@ -172,14 +217,14 @@ func (c *SAPAPICaller) callToItemPricingElement(url string) ([]sap_api_output_fo
 	defer resp.Body.Close()
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
-	data, err := sap_api_output_formatter.ConvertToItemPricingElement(byteArray, c.log)
+	data, err := sap_api_output_formatter.ConvertToToItemPricingElement(byteArray, c.log)
 	if err != nil {
 		return nil, fmt.Errorf("convert error: %w", err)
 	}
 	return data, nil
 }
 
-func (c *SAPAPICaller) callToItemScheduleLine(url string) ([]sap_api_output_formatter.ItemScheduleLine, error) {
+func (c *SAPAPICaller) callToItemScheduleLine(url string) ([]sap_api_output_formatter.ToItemScheduleLine, error) {
 	resp, err := c.requestClient.Request("GET", url, map[string]string{}, "")
 	if err != nil {
 		return nil, fmt.Errorf("API request error: %w", err)
@@ -187,7 +232,7 @@ func (c *SAPAPICaller) callToItemScheduleLine(url string) ([]sap_api_output_form
 	defer resp.Body.Close()
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
-	data, err := sap_api_output_formatter.ConvertToItemScheduleLine(byteArray, c.log)
+	data, err := sap_api_output_formatter.ConvertToToItemScheduleLine(byteArray, c.log)
 	if err != nil {
 		return nil, fmt.Errorf("convert error: %w", err)
 	}

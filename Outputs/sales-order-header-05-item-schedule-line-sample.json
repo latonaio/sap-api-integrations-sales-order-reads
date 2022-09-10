@@ -1,0 +1,36 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L88",
+	"function": "sap-api-integrations-sales-order-reads/SAP_API_Caller.(*SAPAPICaller).Header",
+	"level": "INFO",
+	"message": [
+		{
+			"SalesOrder": "1",
+			"SalesOrderItem": "10",
+			"ScheduleLine": "1",
+			"RequestedDeliveryDate": "2022-09-12",
+			"ConfirmedDeliveryDate": "",
+			"OrderQuantityUnit": "PC",
+			"ScheduleLineOrderQuantity": "1",
+			"ConfdOrderQtyByMatlAvailCheck": "0",
+			"DeliveredQtyInOrderQtyUnit": "0",
+			"OpenConfdDelivQtyInOrdQtyUnit": "0",
+			"CorrectedQtyInOrderQtyUnit": "1",
+			"DelivBlockReasonForSchedLine": ""
+		},
+		{
+			"SalesOrder": "1",
+			"SalesOrderItem": "10",
+			"ScheduleLine": "2",
+			"RequestedDeliveryDate": "",
+			"ConfirmedDeliveryDate": "2022-09-13",
+			"OrderQuantityUnit": "PC",
+			"ScheduleLineOrderQuantity": "0",
+			"ConfdOrderQtyByMatlAvailCheck": "1",
+			"DeliveredQtyInOrderQtyUnit": "0",
+			"OpenConfdDelivQtyInOrdQtyUnit": "1",
+			"CorrectedQtyInOrderQtyUnit": "0",
+			"DelivBlockReasonForSchedLine": ""
+		}
+	],
+	"time": "2022-09-10T19:54:04+09:00"
+}

@@ -172,6 +172,8 @@ type ToItem struct {
 	SDProcessStatus             string `json:"SDProcessStatus"`
 	DeliveryStatus              string `json:"DeliveryStatus"`
 	OrderRelatedBillingStatus   string `json:"OrderRelatedBillingStatus"`
+	ToItemPricingElement        string `json:"to_PricingElement"`
+	ToItemScheduleLine          string `json:"to_ScheduleLine"`
 }
 
 type ToItemPricingElement struct {

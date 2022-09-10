@@ -1,0 +1,32 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L67",
+	"function": "sap-api-integrations-sales-order-reads/SAP_API_Caller.(*SAPAPICaller).Header",
+	"level": "INFO",
+	"message": [
+		{
+			"SalesOrder": "1",
+			"PartnerFunction": "SP",
+			"Customer": "1",
+			"Supplier": ""
+		},
+		{
+			"SalesOrder": "1",
+			"PartnerFunction": "BP",
+			"Customer": "1",
+			"Supplier": ""
+		},
+		{
+			"SalesOrder": "1",
+			"PartnerFunction": "PY",
+			"Customer": "1",
+			"Supplier": ""
+		},
+		{
+			"SalesOrder": "1",
+			"PartnerFunction": "SH",
+			"Customer": "1",
+			"Supplier": ""
+		}
+	],
+	"time": "2022-09-10T18:07:32+09:00"
+}
