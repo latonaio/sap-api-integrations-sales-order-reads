@@ -106,8 +106,6 @@
 			"DeliveryStatus": "",
 			"OrderRelatedBillingStatus": "",
 			"ItemPartner": {
-				"SalesOrder": "",
-				"SalesOrderItem": "",
 				"PartnerFunction": "",
 				"Customer": "",
 				"Supplier": "",
