@@ -55,7 +55,12 @@ type Item struct {
 			SDProcessStatus             string `json:"SDProcessStatus"`
 			DeliveryStatus              string `json:"DeliveryStatus"`
 			OrderRelatedBillingStatus   string `json:"OrderRelatedBillingStatus"`
-			ToItemPricingElement        struct {
+			ToItemPartner               struct {
+				Deferred struct {
+					URI string `json:"uri"`
+				} `json:"__deferred"`
+			} `json:"to_Partner"`
+			ToItemPricingElement struct {
 				Deferred struct {
 					URI string `json:"uri"`
 				} `json:"__deferred"`

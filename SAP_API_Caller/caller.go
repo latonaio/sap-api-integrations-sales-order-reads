@@ -73,6 +73,13 @@ func (c *SAPAPICaller) Header(salesOrder string) {
 	}
 	c.log.Info(itemData)
 
+	itemPartnerData, err := c.callToItemPartner(itemData[0].ToItemPartner)
+	if err != nil {
+		c.log.Error(err)
+		return
+	}
+	c.log.Info(itemPartnerData)
+
 	itemPricingElementData, err := c.callToItemPricingElement(itemData[0].ToItemPricingElement)
 	if err != nil {
 		c.log.Error(err)
@@ -131,6 +138,21 @@ func (c *SAPAPICaller) callToItem(url string) ([]sap_api_output_formatter.ToItem
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
 	data, err := sap_api_output_formatter.ConvertToToItem(byteArray, c.log)
+	if err != nil {
+		return nil, fmt.Errorf("convert error: %w", err)
+	}
+	return data, nil
+}
+
+func (c *SAPAPICaller) callToItemPartner(url string) ([]sap_api_output_formatter.ToItemPartner, error) {
+	resp, err := c.requestClient.Request("GET", url, map[string]string{}, "")
+	if err != nil {
+		return nil, fmt.Errorf("API request error: %w", err)
+	}
+	defer resp.Body.Close()
+
+	byteArray, _ := ioutil.ReadAll(resp.Body)
+	data, err := sap_api_output_formatter.ConvertToToItemPartner(byteArray, c.log)
 	if err != nil {
 		return nil, fmt.Errorf("convert error: %w", err)
 	}

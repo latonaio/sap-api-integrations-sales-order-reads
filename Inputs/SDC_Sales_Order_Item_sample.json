@@ -105,6 +105,15 @@
 			"SDProcessStatus": "",
 			"DeliveryStatus": "",
 			"OrderRelatedBillingStatus": "",
+			"ItemPartner": {
+				"SalesOrder": "",
+				"SalesOrderItem": "",
+				"PartnerFunction": "",
+				"Customer": "",
+				"Supplier": "",
+				"Personnel": "",
+				"ContactPerson": ""
+				},
 			"ItemPricingElement": {
 				"PricingProcedureStep": "",
 				"PricingProcedureCounter": "",

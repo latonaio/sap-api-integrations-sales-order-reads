@@ -113,6 +113,7 @@ type Item struct {
 	SDProcessStatus             string `json:"SDProcessStatus"`
 	DeliveryStatus              string `json:"DeliveryStatus"`
 	OrderRelatedBillingStatus   string `json:"OrderRelatedBillingStatus"`
+	ToItemPartner               string `json:"to_Partner"`
 	ToItemPricingElement        string `json:"to_PricingElement"`
 	ToItemScheduleLine          string `json:"to_ScheduleLine"`
 }
@@ -172,8 +173,19 @@ type ToItem struct {
 	SDProcessStatus             string `json:"SDProcessStatus"`
 	DeliveryStatus              string `json:"DeliveryStatus"`
 	OrderRelatedBillingStatus   string `json:"OrderRelatedBillingStatus"`
+	ToItemPartner               string `json:"to_Partner"`
 	ToItemPricingElement        string `json:"to_PricingElement"`
 	ToItemScheduleLine          string `json:"to_ScheduleLine"`
+}
+
+type ToItemPartner struct {
+	SalesOrder                  string `json:"SalesOrder"` 
+	SalesOrderItem              string `json:"SalesOrderItem"`
+	PartnerFunction             string `json:"PartnerFunction"` 
+	Customer                    string `json:"Customer"`
+	Supplier                    string `json:"Supplier"`
+	Personnel                   string `json:"Personnel"` 
+	ContactPerson               string `json:"ContactPerson"`
 }
 
 type ToItemPricingElement struct {

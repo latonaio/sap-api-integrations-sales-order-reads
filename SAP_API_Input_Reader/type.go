@@ -160,6 +160,15 @@ type SDC struct {
 			SDProcessStatus             string `json:"SDProcessStatus"`
 			DeliveryStatus              string `json:"DeliveryStatus"`
 			OrderRelatedBillingStatus   string `json:"OrderRelatedBillingStatus"`
+			ItemPartner      struct {			
+				SalesOrder                  string `json:"SalesOrder"` 
+				SalesOrderItem              string `json:"SalesOrderItem"`
+				PartnerFunction             string `json:"PartnerFunction"` 
+				Customer                    string `json:"Customer"`
+				Supplier                    string `json:"Supplier"`
+				Personnel                   string `json:"Personnel"` 
+				ContactPerson               string `json:"ContactPerson"`			
+				} `json:"ItemPartner"`			
 			ItemPricingElement          struct {
 				PricingProcedureStep           string `json:"PricingProcedureStep"`
 				PricingProcedureCounter        string `json:"PricingProcedureCounter"`

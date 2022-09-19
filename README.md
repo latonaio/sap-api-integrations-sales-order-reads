@@ -1,5 +1,4 @@
-# sap-api-integrations-sales-order-reads
-sap-api-integrations-sales-order-reads は、他のすべての sap-api-integrations-sales-order-reads 作成更新の際の 参照元となる マスタレポジトリです。  
+# sap-api-integrations-sales-order-reads  
 sap-api-integrations-sales-order-reads は、外部システム(特にエッジコンピューティング環境)をSAPと統合することを目的に、SAP API で 受注データを取得するマイクロサービスです。    
 sap-api-integrations-sales-order-reads には、サンプルのAPI Json フォーマットが含まれています。   
 sap-api-integrations-sales-order-reads は、オンプレミス版である（＝クラウド版ではない）SAPS4HANA API の利用を前提としています。クラウド版APIを利用する場合は、ご注意ください。   
@@ -51,7 +50,7 @@ accepter において 下記の例のように、データの種別（＝APIの�
 ここでは、"Header" が指定されています。
 
 ```
-	"api_schema": "sap.s4.beh.salesorder.v1.SalesOrder.Created.v1",
+	"api_schema": "SAPSalesOrderReads",
 	"accepter": ["Header"],
 	"sales_order": "1",
 	"deleted": false
@@ -62,7 +61,7 @@ accepter において 下記の例のように、データの種別（＝APIの�
 全データを取得する場合、sample.json は以下のように記載します。  
 
 ```
-	"api_schema": "sap.s4.beh.salesorder.v1.SalesOrder.Created.v1",
+	"api_schema": "SAPSalesOrderReads",
 	"accepter": ["All"],
 	"sales_order": "1",
 	"deleted": false
@@ -98,16 +97,71 @@ func (c *SAPAPICaller) AsyncGetSalesOrder(salesOrder, salesOrderItem string, acc
 }
 ```
 ## Output  
-本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。  
+本マイクロサービスでは、[golang-logging-library-for-sap](https://github.com/latonaio/golang-logging-library-for-sap) により、以下のようなデータがJSON形式で出力されます。  
 以下の sample.json の例は、SAP 受注 の ヘッダデータ が取得された結果の JSON の例です。  
-以下の項目のうち、"SalesOrder" ～ "ToItem" は、/SAP_API_Output_Formatter/type.go 内 の Type Header {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。  
+以下の項目のうち、"SalesOrder" ～ "ToItem" は、/SAP_API_Output_Formatter/type.go 内 の Type Header {} による出力結果です。"cursor" ～ "time"は、golang-logging-library-for-sap による 定型フォーマットの出力結果です。  
 
 ```
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L50",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L60",
 	"function": "sap-api-integrations-sales-order-reads/SAP_API_Caller.(*SAPAPICaller).Header",
 	"level": "INFO",
-	"message": "[{XXXXXXXXXXXXXXXXXXXXXXXXXXXXX}]",
-	"time": "2021-12-11T15:33:00.054455+09:00"
+	"message": [
+		{
+			"SalesOrder": "1",
+			"SalesOrderType": "OR1",
+			"SalesOrganization": "0001",
+			"DistributionChannel": "01",
+			"OrganizationDivision": "01",
+			"SalesGroup": "",
+			"SalesOffice": "",
+			"SalesDistrict": "000001",
+			"SoldToParty": "1",
+			"CreationDate": "2022-09-10",
+			"LastChangeDate": "",
+			"ExternalDocumentID": "",
+			"LastChangeDateTime": "2022-09-10T18:02:13+09:00",
+			"PurchaseOrderByCustomer": "Test",
+			"CustomerPurchaseOrderDate": "",
+			"SalesOrderDate": "2022-09-10",
+			"TotalNetAmount": "1000.00",
+			"OverallDeliveryStatus": "",
+			"TotalBlockStatus": "",
+			"OverallOrdReltdBillgStatus": "",
+			"OverallSDDocReferenceStatus": "",
+			"TransactionCurrency": "EUR",
+			"SDDocumentReason": "",
+			"PricingDate": "2022-09-10",
+			"PriceDetnExchangeRate": "",
+			"RequestedDeliveryDate": "2022-09-12",
+			"ShippingCondition": "01",
+			"CompleteDeliveryIsDefined": false,
+			"ShippingType": "",
+			"HeaderBillingBlockReason": "",
+			"DeliveryBlockReason": "",
+			"IncotermsClassification": "FH",
+			"CustomerPriceGroup": "01",
+			"PriceListType": "",
+			"CustomerPaymentTerms": "0001",
+			"PaymentMethod": "",
+			"ReferenceSDDocument": "",
+			"ReferenceSDDocumentCategory": "",
+			"CustomerAccountAssignmentGroup": "01",
+			"AccountingExchangeRate": "0.00000",
+			"CustomerGroup": "",
+			"AdditionalCustomerGroup1": "",
+			"AdditionalCustomerGroup2": "",
+			"AdditionalCustomerGroup3": "",
+			"AdditionalCustomerGroup4": "",
+			"AdditionalCustomerGroup5": "",
+			"CustomerTaxClassification1": "",
+			"TotalCreditCheckStatus": "",
+			"BillingDocumentDate": "",
+			"to_Partner": "http://100.21.57.120:8080/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder('1')/to_Partner",
+			"to_Item": "http://100.21.57.120:8080/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder('1')/to_Item"
+		}
+	],
+	"time": "2022-09-10T19:38:33+09:00"
 }
+
 ```

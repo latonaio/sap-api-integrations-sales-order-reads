@@ -48,12 +48,13 @@
 			"AccountingExchangeRate": "0.00000",
 			"ReferenceSDDocument": "",
 			"ReferenceSDDocumentItem": "0",
-			"SDProcessStatus": "A",
-			"DeliveryStatus": "A",
+			"SDProcessStatus": "C",
+			"DeliveryStatus": "C",
 			"OrderRelatedBillingStatus": "",
+			"to_Partner": "http://100.21.57.120:8080/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrderItem(SalesOrder='1',SalesOrderItem='10')/to_Partner",
 			"to_PricingElement": "http://100.21.57.120:8080/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrderItem(SalesOrder='1',SalesOrderItem='10')/to_PricingElement",
 			"to_ScheduleLine": "http://100.21.57.120:8080/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrderItem(SalesOrder='1',SalesOrderItem='10')/to_ScheduleLine"
 		}
 	],
-	"time": "2022-09-10T19:54:04+09:00"
+	"time": "2022-09-19T15:33:54+09:00"
 }

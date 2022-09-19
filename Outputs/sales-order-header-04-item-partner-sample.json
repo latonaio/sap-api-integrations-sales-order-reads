@@ -1,0 +1,7 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L78",
+	"function": "sap-api-integrations-sales-order-reads/SAP_API_Caller.(*SAPAPICaller).Header",
+	"level": "ERROR",
+	"message": "convert error: Result data is not exist",
+	"time": "2022-09-19T15:33:55+09:00"
+}

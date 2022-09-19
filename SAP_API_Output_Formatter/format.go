@@ -144,6 +144,7 @@ func ConvertToItem(raw []byte, l *logger.Logger) ([]Item, error) {
 			SDProcessStatus:             data.SDProcessStatus,
 			DeliveryStatus:              data.DeliveryStatus,
 			OrderRelatedBillingStatus:   data.OrderRelatedBillingStatus,
+			ToItemPartner:		         data.ToItemPartner.Deferred.URI,
 			ToItemPricingElement:        data.ToItemPricingElement.Deferred.URI,
 			ToItemScheduleLine:          data.ToItemScheduleLine.Deferred.URI,
 		})
@@ -241,12 +242,42 @@ func ConvertToToItem(raw []byte, l *logger.Logger) ([]ToItem, error) {
 			SDProcessStatus:             data.SDProcessStatus,
 			DeliveryStatus:              data.DeliveryStatus,
 			OrderRelatedBillingStatus:   data.OrderRelatedBillingStatus,
+			ToItemPartner:		         data.ToItemPartner.Deferred.URI,
 			ToItemPricingElement:        data.ToItemPricingElement.Deferred.URI,
 			ToItemScheduleLine:          data.ToItemScheduleLine.Deferred.URI,
 		})
 	}
 
 	return toItem, nil
+}
+
+func ConvertToToItemPartner(raw []byte, l *logger.Logger) ([]ToItemPartner, error) {
+	pm := &responses.ToItemPartner{}
+	err := json.Unmarshal(raw, pm)
+	if err != nil {
+		return nil, xerrors.Errorf("cannot convert to ToItemPartner. unmarshal error: %w", err)
+	}
+	if len(pm.D.Results) == 0 {
+		return nil, xerrors.New("Result data is not exist")
+	}
+	if len(pm.D.Results) > 10 {
+		l.Info("raw data has too many Results. %d Results exist. show the first 10 of Results array", len(pm.D.Results))
+	}
+	toItemPartner := make([]ToItemPartner, 0, 10)
+	for i := 0; i < 10 && i < len(pm.D.Results); i++ {
+		data := pm.D.Results[i]
+		toItemPartner = append(toItemPartner, ToItemPartner{
+			SalesOrder:                  data.SalesOrder,
+			SalesOrderItem:              data.SalesOrderItem,
+			PartnerFunction:             data.PartnerFunction,
+			Customer:                    data.Customer,
+			Supplier:                    data.Supplier,
+			Personnel:                   data.Personnel,
+			ContactPerson:               data.ContactPerson,
+		})
+	}
+
+	return toItemPartner, nil
 }
 
 func ConvertToToItemPricingElement(raw []byte, l *logger.Logger) ([]ToItemPricingElement, error) {
