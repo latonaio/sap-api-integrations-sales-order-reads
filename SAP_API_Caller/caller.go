@@ -55,45 +55,45 @@ func (c *SAPAPICaller) Header(salesOrder string) {
 	headerData, err := c.callSalesOrderSrvAPIRequirementHeader("A_SalesOrder", salesOrder)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(headerData)
 	}
-	c.log.Info(headerData)
 
 	headerPartnerData, err := c.callToHeaderPartner(headerData[0].ToHeaderPartner)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(headerPartnerData)
 	}
-	c.log.Info(headerPartnerData)
 
 	itemData, err := c.callToItem(headerData[0].ToItem)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(itemData)
 	}
-	c.log.Info(itemData)
 
 	itemPartnerData, err := c.callToItemPartner2(itemData[0].ToItemPartner)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(itemPartnerData)
 	}
-	c.log.Info(itemPartnerData)
 
 	itemPricingElementData, err := c.callToItemPricingElement2(itemData[0].ToItemPricingElement)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(itemPricingElementData)
 	}
-	c.log.Info(itemPricingElementData)
 
 	itemScheduleLineData, err := c.callToItemScheduleLine2(itemData[0].ToItemScheduleLine)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(itemScheduleLineData)
 	}
-	c.log.Info(itemScheduleLineData)
-
+	return
 }
 
 func (c *SAPAPICaller) callSalesOrderSrvAPIRequirementHeader(api, salesOrder string) ([]sap_api_output_formatter.Header, error) {
@@ -193,30 +193,31 @@ func (c *SAPAPICaller) Item(salesOrder, salesOrderItem string) {
 	itemData, err := c.callSalesOrderSrvAPIRequirementItem("A_SalesOrderItem", salesOrder, salesOrderItem)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(itemData)
 	}
-	c.log.Info(itemData)
-	
+
 	itemPartnerData, err := c.callToItemPartner(itemData[0].ToItemPartner)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(itemPartnerData)
 	}
-	c.log.Info(itemPartnerData)
 
 	itemPricingElementData, err := c.callToItemPricingElement(itemData[0].ToItemPricingElement)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(itemPricingElementData)
 	}
-	c.log.Info(itemPricingElementData)
 
 	itemScheduleLineData, err := c.callToItemScheduleLine(itemData[0].ToItemScheduleLine)
 	if err != nil {
 		c.log.Error(err)
-		return
+	} else {
+		c.log.Info(itemScheduleLineData)
 	}
-	c.log.Info(itemScheduleLineData)
+	return
 }
 
 func (c *SAPAPICaller) callSalesOrderSrvAPIRequirementItem(api, salesOrder, salesOrderItem string) ([]sap_api_output_formatter.Item, error) {

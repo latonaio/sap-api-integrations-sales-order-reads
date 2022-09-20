@@ -1,5 +1,5 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L88",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L94",
 	"function": "sap-api-integrations-sales-order-reads/SAP_API_Caller.(*SAPAPICaller).Header",
 	"level": "INFO",
 	"message": [
@@ -26,11 +26,11 @@
 			"OrderQuantityUnit": "PC",
 			"ScheduleLineOrderQuantity": "0",
 			"ConfdOrderQtyByMatlAvailCheck": "1",
-			"DeliveredQtyInOrderQtyUnit": "0",
-			"OpenConfdDelivQtyInOrdQtyUnit": "1",
+			"DeliveredQtyInOrderQtyUnit": "1",
+			"OpenConfdDelivQtyInOrdQtyUnit": "0",
 			"CorrectedQtyInOrderQtyUnit": "0",
 			"DelivBlockReasonForSchedLine": ""
 		}
 	],
-	"time": "2022-09-10T19:54:04+09:00"
+	"time": "2022-09-20T20:47:35+09:00"
 }

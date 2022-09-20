@@ -1,5 +1,5 @@
 {
-	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L81",
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-sales-order-reads/SAP_API_Caller/caller.go#L87",
 	"function": "sap-api-integrations-sales-order-reads/SAP_API_Caller.(*SAPAPICaller).Header",
 	"level": "INFO",
 	"message": [
@@ -82,5 +82,5 @@
 			"ConditionIsManuallyChanged": false
 		}
 	],
-	"time": "2022-09-10T19:54:04+09:00"
+	"time": "2022-09-20T20:47:35+09:00"
 }
